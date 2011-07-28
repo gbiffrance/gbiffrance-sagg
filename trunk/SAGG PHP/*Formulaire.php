@@ -3,17 +3,22 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" >
 
 <script type="text/javascript">
-          function selection(select) {
-          	
-            var opt=select.getElementsByTagName("option" );
-            for (var i=0; i<opt.length; i++) {
+	function selection(select) {
+      	
+        var opt=select.getElementsByTagName("option" );
+        for (var i=0; i<opt.length; i++) {
               var x=document.getElementById(opt[i].value);
               if (x) x.style.display="none";
             }
+
             var cat = document.getElementById(select.value);
+
             if (cat) cat.style.display="block";
+
+            if (select.value != "0"){document.getElementById("5").style.display="block";}else{document.getElementById("5").style.display="none";}
           }
 </script>
+
         
    <head>
        <title>GBIF France SAG</title>
@@ -39,7 +44,8 @@
 				<? include("submenu.php") ?>
 			<!--</form>-->
 
-       </div>
+
+ 
  
        <!-- Le pied de page -->
  
@@ -49,3 +55,4 @@
  
    </body>
 </html>
+
