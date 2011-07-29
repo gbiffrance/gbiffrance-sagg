@@ -20,11 +20,13 @@ function parseForm(){
 	$recherche = array('Taxon' => array(), 'Pays' => array());
 	
 	foreach($_POST as $key => $value){
-		if(stristr($key, "taxon")){
-			$recherche['Taxon'][] = $value;
-		}else if (stristr($key, "pays")){
-			$recherche['Pays'][] = $value;
-		}		
+		if($value != ""){
+			if(stristr($key, "taxon")){
+				$recherche['Taxon'][] = $value;
+			}else if (stristr($key, "pays")){
+				$recherche['Pays'][] = $value;
+			}		
+		}
 	}
 	return($recherche);
 }
@@ -162,6 +164,32 @@ $heure_actu = $h.":".$m.":".$s ;
 					<td colspan="3">
 						<a href = "cible.php">test</a>
 					</td>
+				</tr>
+				
+				<tr>
+					<form id = "stat">
+						<td colspan = "2">
+							<p><u><b>Analyse temporelle</b></u></p>
+							<p><input type = "checkbox" id = "StatTemp" name = "">Réaliser</p>
+							<p><u>Requête comparative</u></p>
+							<select id = "choix">
+				       			<option value="NULL" selected="selected"></option>
+							    <option value="Taxon">Taxon</option>
+							    <option value="Pays">Pays</option>
+							</select>
+							<input type = "button" value = "Ajoute champ de recherche" onclick = "ajouteChamp('stat', 'sup', 0)"/>
+							<?php
+								$id = 0;
+								foreach($recherche AS $key => $value){
+									$id = $id + 1; 
+									foreach($recherche[$key] AS $choix){
+										echo "<div id =\"".$id."\"><p><u>".$key."</u><input id =\"".$key.$id."\" name = \"".$key.$id."\" type = \"text\"/ value = \"".$choix."\"> <button type = \"button\" name = \"Effacer\" onclick = \"delHTML( ".$id." )\">Effacer</button></p></div>";
+									}
+								}
+							?>
+							<div id = "sup"></div>
+						</td>
+					</form>
 				</tr>				
 			</table>
 		</div>

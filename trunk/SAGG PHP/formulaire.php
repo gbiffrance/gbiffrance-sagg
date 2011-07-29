@@ -41,7 +41,7 @@
 								    <option value="Taxon">Taxon</option>
 								    <option value="Pays">Pays</option>
 								</select>
-								<input type = "button" value = "Ajoute champ de recherche" onclick = "ajouteChamp()"/>
+								<input type = "button" value = "Ajoute champ de recherche" onclick = "ajouteChamp('temp', 'requete', 1)"/>
 							</form>
 						</p>				
 					</td>
