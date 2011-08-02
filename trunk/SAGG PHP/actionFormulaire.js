@@ -14,7 +14,7 @@ function delHTML(id) {
 }
 
 function ajouteChamp(form, loc, valid){
-	gccgvghbn 
+
 	var x=document.getElementById(form).getElementsByTagName("input");
 	
 	if(document.getElementById("choix").value == "Taxon") {
@@ -23,4 +23,12 @@ function ajouteChamp(form, loc, valid){
 		ecritureCaseTexte(loc, x.length-1, "Pays");
 	}
 	if(valid == 1){document.getElementById('valid').style.display="block";}
+}
+
+function affiche(id, id2){
+	if(document.getElementById(id).checked == true){
+		document.getElementById(id2).style.display="block";
+	}else{
+		document.getElementById(id2).style.display="none";
+	}
 }
