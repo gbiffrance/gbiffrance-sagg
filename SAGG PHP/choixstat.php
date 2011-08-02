@@ -128,8 +128,6 @@ $heure_actu = $h.":".$m.":".$s ;
 
    <body>
 
-	
-
 <!-- ---------- HAUT DE PAGE ---------- -->
 
 		<div id="banniere">
@@ -151,13 +149,13 @@ $heure_actu = $h.":".$m.":".$s ;
 			<table border="1" width = "100%" >
 				<tr>
 					<!-- Sous-menu de formulaire 1/4 -->
-					<td width = "20%">
+					<td width = "30%">
 						<p><b><u>DONNEES TROUVEES</b></u>
 						<ul>
-							<li>Nombre occ = <? echo $comptebase ?></li>
-							<li>Nombre occ = <? echo $comptecleanloc ?></li>
-							<li>Nombre occ = <? echo $comptecleandate ?></li>
-							<li>Nombre occ = <? echo $comptecleandateloc ?></li>
+							<li>Nombre occ total = <? echo $comptebase ?></li>
+							<li>Nombre occ daté = <? echo $comptecleandate ?></li>
+							<li>Nombre occ localisé = <? echo $comptecleanloc ?></li>							
+							<li>Nombre occ daté et localisé= <? echo $comptecleandateloc ?></li>
 						</ul></p>				
 					</td>
 					<!-- Case de formulaire 3/4 -->
@@ -167,28 +165,31 @@ $heure_actu = $h.":".$m.":".$s ;
 				</tr>
 				
 				<tr>
-					<form id = "stat">
+					<form id = "stat" method="post" action="teststat.php">
 						<td colspan = "2">
 							<p><u><b>Analyse temporelle</b></u></p>
-							<p><input type = "checkbox" id = "StatTemp" name = "">Réaliser</p>
-							<p><u>Requête comparative</u></p>
-							<select id = "choix">
-				       			<option value="NULL" selected="selected"></option>
-							    <option value="Taxon">Taxon</option>
-							    <option value="Pays">Pays</option>
-							</select>
-							<input type = "button" value = "Ajoute champ de recherche" onclick = "ajouteChamp('stat', 'sup', 0)"/>
-							<?php
-								$id = 0;
-								foreach($recherche AS $key => $value){
-									$id = $id + 1; 
-									foreach($recherche[$key] AS $choix){
-										echo "<div id =\"".$id."\"><p><u>".$key."</u><input id =\"".$key.$id."\" name = \"".$key.$id."\" type = \"text\"/ value = \"".$choix."\"> <button type = \"button\" name = \"Effacer\" onclick = \"delHTML( ".$id." )\">Effacer</button></p></div>";
-									}
-								}
-							?>
-							<div id = "sup"></div>
+							<p><input type = "checkbox" id = "StatTemp" onclick = "affiche('StatTemp', 'sup')">Réaliser</p>
+							<div id = "sup" style = "display:none">
+								<p><u>Requête comparative</u></p>
+								<select id = "choix">
+					       			<option value="NULL" selected="selected"></option>
+								    <option value="Taxon">Taxon</option>
+								    <option value="Pays">Pays</option>
+								</select>
+								<input type = "button" value = "Ajoute champ de recherche" onclick = "ajouteChamp('stat', 'sup', 0)"/>
+								<?php
+										$id = 0;
+										foreach($recherche AS $key => $value){ 
+											foreach($recherche[$key] AS $choix){
+												$id = $id + 1;
+												echo "<div id =\"".$id."\"><p><u>".$key."</u><input id =\"".$key.$id."\" name = \"".$key.$id."\" type = \"text\"/ value = \"".$choix."\"> <button type = \"button\" name = \"Effacer\" onclick = \"delHTML( ".$id." )\">Effacer</button></p></div>";
+											}
+										}
+									?>
+							</div>
+							<br/>
 						</td>
+						<tr><td colspan = "4"><p align = "center"><input id = "valid" type="submit"/></p></td></tr>
 					</form>
 				</tr>				
 			</table>
@@ -205,9 +206,15 @@ $heure_actu = $h.":".$m.":".$s ;
 <?php
 	//AJOUT DE LA REQUETE DE BASE POUR COMPARAISON 
 	$_SESSION['requeteBase'] = array(
-		'base' => " FROM ".$join." WHERE ".$contrainte,
-		'cleanDate' => " FROM ".$join." WHERE ".$contrainte." AND ".$cleanDate, 
-		'cleanLoc' => " FROM ".$join." WHERE ".$contrainte." AND ".$cleanLoc, 
-		'cleanLocDate' => " FROM ".$join." WHERE ".$contrainte." AND ".$cleanLoc." AND ".$cleanDate
-	)
+		'base' 			=> " FROM ".$join." WHERE ".$contrainte,
+		'cleanDate'		=> " FROM ".$join." WHERE ".$contrainte." AND ".$cleanDate, 
+		'cleanLoc' 		=> " FROM ".$join." WHERE ".$contrainte." AND ".$cleanLoc, 
+		'cleanLocDate' 	=> " FROM ".$join." WHERE ".$contrainte." AND ".$cleanLoc." AND ".$cleanDate
+	);
+	$_SESSION['Comptage'] = array(
+		'CompteBase' 	=> $comptebase,
+		'CompteDate' 	=> $comptecleandate,
+		'CompteLoc' 	=> $comptecleanloc,
+		'CompteDateLoc' => $comptecleandateloc
+	);
 ?>

@@ -1,23 +1,17 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" >
-
    <head>
        <title>Formulaire SAG</title>
        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
        <link rel="stylesheet" media="screen" type="text/css" title="style" href="base.css" />
        <script type = "text/javascript" src = "actionFormulaire.js"></script>
    </head>
-
    <body>
 
-	
-
 <!-- ---------- HAUT DE PAGE ---------- -->
-
 		<div id="banniere">
-			<p>FORMULAIRE DE REQUETE POUR ANALYSE SAG<p>
+			<p>FORMULAIRE DE REQUETE POUR ANALYSE SAG</p>
 		</div>
-
 
 <!-- ---------- MENU ---------- --> 
 		<div id="menu">		
@@ -25,7 +19,6 @@
 		        <a href="formulaire.php"><img src="ornithorynque.jpg" alt="SAG" border="0"/></a>
 			</div>
 		</div>
-
 
 <!-- ---------- CORPS DE TEXTE ---------- -->  
 		<div id="corps">
@@ -61,7 +54,6 @@
 				</tr>
 			</table>
 		</div>
-
 
 <!-- ---------- PIED DE PAGE ---------- -->
 		<div id ="pied_de_page">
