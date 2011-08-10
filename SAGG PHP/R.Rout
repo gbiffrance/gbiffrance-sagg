@@ -1,0 +1,1 @@
+/usr/lib/R/bin/exec/R: symbol lookup error: /usr/lib/R/lib/libR.so: undefined symbol: gzopen64
