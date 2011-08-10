@@ -1,0 +1,8 @@
+Log File of the temporal analyse :
+2011-08-10 14:53:36 - Start of analyse
+2011-08-10 14:53:37 - P-values of Shapiro-Wilk test (normality) for deviations = 0.03568 
+2011-08-10 14:53:37 - P-values of Kolmogorov-Smirnov test (normality) for deviations = 0.34734 
+2011-08-10 14:53:37 - P-values of Shapiro-Wilk test (normality) for variations = 0.37966 
+2011-08-10 14:53:37 - P-values of Kolmogorov-Smirnov test (normality) for variations = 0.95687
+ 
+2011-08-10 14:53:37- End of temporal Analyse
